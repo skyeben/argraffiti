@@ -2,30 +2,80 @@
 <html lang="en">
 
 <body>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
 
-<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        #ui {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+        #canvas {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 998; 
+        }
 
-<a-scene embedded 
-            vr-mode-ui="enabled: false"
-            arjs="detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_5_5;">   
-            
-    <a-marker type="barcode" value="0">
-        <a-image 
-            src="assets/graffiti.png"
-            position="0 0 0"
-            rotation="-90 0 0"
-            width="1.5"
-            height="1"
-            scale="7 7 7">
-        </a-image>
-    </a-marker>
+        .button {
+            background-color: #049a63;
+            width: 75px;
+            border: none;
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+            padding: 3px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 3px 3px;
+            cursor: pointer
+        }
 
-    <a-entity camera></a-entity>
+        .montserratBold {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+        }
+    </style>
 
-</a-scene>
+    <div id="ui">
+        <input type="text" id="text" placeholder="Insert Text Here">
+        <button class="button" id="button">Submit</button>
+    </div>
 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    
+    <canvas id="canvas" width="2048" height="1024"></canvas>
 
+    <script src="graffiti-text.js"></script>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
+    <a-scene embedded 
+                vr-mode-ui="enabled: false"
+                arjs="detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_5_5;">   
+                
+        <a-marker type="barcode" value="0">
+            <a-image
+                src="#canvas"
+                position="0 0 0"
+                rotation="-90 0 0"
+                width="5"
+                height="5"
+            ></a-image>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+
+    </a-scene>
 </body>
 </html>
