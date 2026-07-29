@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body>
+<head>
     <style>
         body {
             margin: 0;
             overflow: hidden;
         }
-
         #ui {
             position: fixed;
             top: 10px;
@@ -23,7 +22,13 @@
             display: none;
             z-index: 998; 
         }
-
+        #file {
+            width: 200px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+        }
         .button {
             background-color: #049a63;
             width: 75px;
@@ -38,26 +43,21 @@
             margin: 3px 3px;
             cursor: pointer
         }
-
-        .montserratBold {
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 900;
-            font-style: normal;
-        }
     </style>
 
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+</head>
+
+<body>
     <div id="ui">
-        <input type="text" id="text" placeholder="Insert Text Here">
+        <input type="text" id="text" autocomplete ="off" placeholder="Insert Text Here">
+        <input type="file" id="file" autocomplete="off" accept=".ttf,.otf">
         <button class="button" id="button">Submit</button>
     </div>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     
     <canvas id="canvas" width="2048" height="1024"></canvas>
 
     <script src="graffiti-text.js"></script>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <a-scene embedded 
@@ -78,4 +78,5 @@
 
     </a-scene>
 </body>
+
 </html>
